@@ -1,0 +1,33 @@
+{
+  "serverStats": {
+    "tps": "19.95",
+    "ping": "24ms",
+    "cpu": "12%"
+  },
+  "links": {
+    "discord_url": "Link Discord Kamu",
+    "direct_play_ip": "basic-8.alstore.space",
+    "display_ip": "play.gakwaras.my.id",
+    "port": "23100"
+  },
+  "leaderboard": [
+    {
+      "rank": 1,
+      "username": "EnderKing",
+      "money": "99,999,999",
+      "imgur_link": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop"
+    },
+    {
+      "rank": 2,
+      "username": "DiamondMiner",
+      "money": "50,000,000",
+      "imgur_link": "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?q=80&w=1974&auto=format&fit=crop"
+    },
+    {
+      "rank": 3,
+      "username": "NetherPro",
+      "money": "25,000,000",
+      "imgur_link": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop"
+    }
+  ]
+}

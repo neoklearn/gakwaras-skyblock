@@ -1,0 +1,562 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin Panel - Gak Waras Skyblock</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#e4ffe2",
+              "tertiary-dim": "#e5e8ee",
+              "on-secondary": "#005f28",
+              "primary-fixed-dim": "#b971ff",
+              "on-secondary-fixed": "#004a1d",
+              "on-primary-container": "#360061",
+              "error-container": "#a70138",
+              primary: "#cc97ff",
+              "outline-variant": "#40485d",
+              tertiary: "#f6f9ff",
+              "surface-bright": "#1f2b49",
+              "surface-container": "#0f1930",
+              "on-surface-variant": "#a3aac4",
+              "on-error": "#490013",
+              "error-dim": "#d73357",
+              "on-surface": "#dee5ff",
+              "surface-variant": "#192540",
+              "surface-container-low": "#091328",
+              secondary: "#6bff8f",
+              "surface-dim": "#060e20",
+              surface: "#060e20",
+              "primary-container": "#c284ff",
+              "surface-tint": "#cc97ff",
+              "on-primary": "#47007c",
+              "primary-dim": "#9c48ea",
+              "tertiary-container": "#e7ebf1",
+              "tertiary-fixed-dim": "#e5e8ee",
+              "surface-container-lowest": "#000000",
+              "secondary-fixed-dim": "#5bf083",
+              "on-error-container": "#ffb2b9",
+              "primary-fixed": "#c284ff",
+              "surface-container-highest": "#192540",
+              "surface-container-high": "#141f38",
+              "on-tertiary-fixed": "#474c51",
+              "secondary-container": "#006e2f",
+              "tertiary-fixed": "#f3f7fd",
+              "on-tertiary": "#5b5f65",
+              "secondary-fixed": "#6bff8f",
+              "inverse-primary": "#842cd3",
+              "on-secondary-fixed-variant": "#006a2d",
+              "secondary-dim": "#5bf083",
+              "on-tertiary-container": "#53575c",
+              "on-background": "#dee5ff",
+              "inverse-surface": "#faf8ff",
+              "inverse-on-surface": "#4d556b",
+              "on-primary-fixed": "#000000",
+              error: "#ff6e84",
+              background: "#060e20",
+              "on-tertiary-fixed-variant": "#64686e",
+              "on-primary-fixed-variant": "#430076",
+              outline: "#6d758c",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Plus Jakarta Sans", "sans-serif"],
+              label: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body min-h-screen flex flex-col antialiased selection:bg-primary/30 selection:text-primary"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 bg-[#060e20]/80 backdrop-blur-xl bg-gradient-to-b from-[#060e20] to-transparent shadow-[0_4px_40px_-15px_rgba(204,151,255,0.1)]"
+    >
+      <div class="flex items-center gap-4">
+        <span
+          class="text-lg font-bold text-primary dark:text-[#cc97ff] font-headline tracking-tight"
+          >⚙️ Admin Panel - Gak Waras Skyblock</span
+        >
+      </div>
+      <nav class="flex items-center gap-6">
+        <a
+          class="text-slate-400 hover:text-white transition-colors hover:bg-white/5 duration-300 px-3 py-1.5 rounded-lg text-sm font-medium"
+          href="#"
+          >Back to Home</a
+        >
+        <div class="flex items-center gap-3">
+          <button
+            class="text-primary hover:bg-white/5 transition-all duration-300 p-2 rounded-full scale-95 active:scale-90 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <button
+            class="text-primary hover:bg-white/5 transition-all duration-300 p-2 rounded-full scale-95 active:scale-90 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined">account_circle</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- Main Content Canvas -->
+    <main
+      class="flex-1 pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto w-full flex flex-col gap-12 relative z-10"
+    >
+      <!-- Background Ambient Glows -->
+      <div
+        class="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none -z-10"
+      ></div>
+      <!-- Page Header -->
+      <div class="text-center space-y-4">
+        <h1
+          class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface"
+        >
+          Admin Control Center
+        </h1>
+        <p class="font-body text-on-surface-variant text-lg max-w-2xl mx-auto">
+          Kelola data papan peringkat dan konfigurasi koneksi website dalam satu tempat.
+        </p>
+      </div>
+
+      <!-- Config Form Card -->
+      <div class="space-y-6">
+        <h2 class="text-2xl font-headline font-bold text-primary flex items-center gap-2">
+            <span class="material-symbols-outlined">settings_ethernet</span>
+            Pengaturan Link & Koneksi
+        </h2>
+        <div
+            class="bg-surface-variant/40 backdrop-blur-2xl border border-outline-variant/20 rounded-xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)] grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+            <div class="space-y-2">
+                <label class="font-label text-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    Discord URL
+                </label>
+                <input
+                    id="config-discord"
+                    class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all font-body"
+                    placeholder="https://discord.gg/xxx"
+                    type="text"
+                />
+            </div>
+            <div class="space-y-2">
+                <label class="font-label text-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">dns</span>
+                    Direct Play IP (Server Button)
+                </label>
+                <input
+                    id="config-direct-ip"
+                    class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all font-body"
+                    placeholder="basic-8.alstore.space"
+                    type="text"
+                />
+            </div>
+            <div class="space-y-2">
+                <label class="font-label text-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                    Display IP (Copy Text)
+                </label>
+                <input
+                    id="config-display-ip"
+                    class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all font-body"
+                    placeholder="play.gakwaras.my.id"
+                    type="text"
+                />
+            </div>
+            <div class="space-y-2">
+                <label class="font-label text-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">tag</span>
+                    Port
+                </label>
+                <input
+                    id="config-port"
+                    class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all font-body"
+                    placeholder="23100"
+                    type="text"
+                />
+            </div>
+            <div class="md:col-span-2 pt-4">
+                <button
+                    id="btn-save-config"
+                    class="w-full bg-primary/20 hover:bg-primary/30 text-primary border border-primary/50 font-headline font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
+                >
+                    <span class="material-symbols-outlined">sync</span>
+                    Update Konfigurasi Link
+                </button>
+            </div>
+        </div>
+      </div>
+
+      <!-- Leaderboard Section Header -->
+      <h2 class="text-2xl font-headline font-bold text-secondary flex items-center gap-2">
+          <span class="material-symbols-outlined">leaderboard</span>
+          Update Papan Peringkat
+      </h2>
+
+      <!-- Leaderboard Form Card -->
+      <div
+        class="bg-surface-variant/40 backdrop-blur-2xl border border-outline-variant/20 rounded-xl p-8 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex flex-col gap-8"
+      >
+        <!-- Rank 1 Input -->
+        <div
+          class="bg-surface-container-high/60 rounded-lg p-6 relative border border-primary/20 shadow-[0_0_30px_rgba(204,151,255,0.05)]"
+        >
+          <div
+            class="absolute -top-3 -left-3 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline font-bold text-xl shadow-[0_0_20px_rgba(204,151,255,0.4)]"
+          >
+            1
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >person</span
+                >
+                Username Pemain
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Masukkan username"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >payments</span
+                >
+                Total Uang ($)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: 1,000,000"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]">link</span>
+                Link Foto (Imgur)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: https://i.imgur.com/xxx.png"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Rank 2 Input -->
+        <div
+          class="bg-surface-container-low/40 rounded-lg p-6 relative border border-outline-variant/10"
+        >
+          <div
+            class="absolute -top-3 -left-3 w-8 h-8 bg-surface-bright border border-outline-variant/30 rounded-full flex items-center justify-center text-on-surface font-headline font-bold"
+          >
+            2
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >person</span
+                >
+                Username Pemain
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Masukkan username"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >payments</span
+                >
+                Total Uang ($)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: 500,000"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]">link</span>
+                Link Foto (Imgur)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: https://i.imgur.com/xxx.png"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Rank 3 Input -->
+        <div
+          class="bg-surface-container-low/40 rounded-lg p-6 relative border border-outline-variant/10"
+        >
+          <div
+            class="absolute -top-3 -left-3 w-8 h-8 bg-surface-bright border border-outline-variant/30 rounded-full flex items-center justify-center text-on-surface font-headline font-bold"
+          >
+            3
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >person</span
+                >
+                Username Pemain
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Masukkan username"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >payments</span
+                >
+                Total Uang ($)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: 250,000"
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="font-label text-sm text-on-surface-variant flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]">link</span>
+                Link Foto (Imgur)
+              </label>
+              <input
+                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/50 transition-all font-body"
+                placeholder="Contoh: https://i.imgur.com/xxx.png"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Action Button Area -->
+        <div class="pt-4 flex flex-col items-center">
+          <button
+            class="w-full bg-gradient-to-r from-secondary to-secondary-dim text-on-secondary font-headline font-bold text-lg py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(107,255,143,0.3)] hover:shadow-[0_0_30px_rgba(107,255,143,0.5)] transition-all flex items-center justify-center gap-3"
+            type="button"
+          >
+            <span class="material-symbols-outlined">save</span>
+            💾 Simpan &amp; Update Website
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-8 mt-20 border-t border-white/5 bg-transparent flex flex-col items-center gap-4 text-center z-10 relative"
+    >
+      <div class="flex gap-6">
+        <a
+          class="text-slate-600 hover:text-primary transition-colors text-[10px] uppercase tracking-widest font-body opacity-80 hover:opacity-100"
+          href="#"
+          >Help Desk</a
+        >
+        <a
+          class="text-slate-600 hover:text-primary transition-colors text-[10px] uppercase tracking-widest font-body opacity-80 hover:opacity-100"
+          href="#"
+          >API Docs</a
+        >
+        <a
+          class="text-slate-600 hover:text-primary transition-colors text-[10px] uppercase tracking-widest font-body opacity-80 hover:opacity-100"
+          href="#"
+          >Privacy</a
+        >
+      </div>
+      <p class="font-body text-[10px] uppercase tracking-widest text-secondary">
+        © 2024 Gak Waras Skyblock - Cosmic Void Edition
+      </p>
+    </footer>
+    <script>
+      // Elements for Links Config
+      const discordInput = document.getElementById("config-discord");
+      const directIpInput = document.getElementById("config-direct-ip");
+      const displayIpInput = document.getElementById("config-display-ip");
+      const portInput = document.getElementById("config-port");
+      const btnSaveConfig = document.getElementById("btn-save-config");
+
+      // Save Config Logic
+      btnSaveConfig.addEventListener("click", async () => {
+        const data = {
+          discord_url: discordInput.value,
+          direct_play_ip: directIpInput.value,
+          display_ip: displayIpInput.value,
+          port: portInput.value
+        };
+
+        try {
+          const res = await fetch("/api/config", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const result = await res.json();
+          if (res.ok) {
+            alert("Success: " + result.message);
+          } else {
+            alert("Error: " + result.error);
+          }
+        } catch (e) {
+          alert("Network Error!");
+          console.error(e);
+        }
+      });
+
+      // Save Leaderboard Logic
+      document
+        .querySelector('.bg-secondary\\/to-secondary-dim') // Select the main save button (more specific selector might be needed if button class changes)
+        .addEventListener("click", async () => {
+          // This selector is a bit fragile, let's use the one from the original script but find it by text if possible
+          // or just assume it's the second button of type button or the one with specific classes
+        });
+        
+        // Let's refactor the leaderboard save button selector
+        const btnSaveLeaderboard = document.querySelector('button.bg-gradient-to-r.from-secondary');
+
+        btnSaveLeaderboard.addEventListener("click", async () => {
+          const inputs = document.querySelectorAll('.flex.flex-col.gap-8 input'); // Only inputs inside leaderboard card
+          if (inputs.length < 9) return;
+
+          const data = [
+            {
+              rank: 1,
+              username: inputs[0].value,
+              money: inputs[1].value,
+              imgur_link: inputs[2].value,
+            },
+            {
+              rank: 2,
+              username: inputs[3].value,
+              money: inputs[4].value,
+              imgur_link: inputs[5].value,
+            },
+            {
+              rank: 3,
+              username: inputs[6].value,
+              money: inputs[7].value,
+              imgur_link: inputs[8].value,
+            },
+          ];
+
+          try {
+            const res = await fetch("/api/leaderboard", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+            const result = await res.json();
+            if (res.ok) {
+              alert("Success: " + result.message);
+            } else {
+              alert("Error: " + result.error);
+            }
+          } catch (e) {
+            alert("Network Error! Please try again.");
+            console.error(e);
+          }
+        });
+
+      // Fetch and populate the form on load
+      async function loadCurrentData() {
+        try {
+          // Load Leaderboard
+          const resL = await fetch("/api/leaderboard");
+          const leaderboard = await resL.json();
+          const inputs = document.querySelectorAll(".flex.flex-col.gap-8 input");
+          leaderboard.forEach((player) => {
+            const baseIdx = (player.rank - 1) * 3;
+            if (inputs[baseIdx]) inputs[baseIdx].value = player.username;
+            if (inputs[baseIdx + 1]) inputs[baseIdx + 1].value = player.money;
+            if (inputs[baseIdx + 2])
+              inputs[baseIdx + 2].value = player.imgur_link;
+          });
+
+          // Load Config
+          const resC = await fetch("/api/status");
+          const status = await resC.json();
+          if (status.links) {
+            discordInput.value = status.links.discord_url || "";
+            directIpInput.value = status.links.direct_play_ip || "";
+            displayIpInput.value = status.links.display_ip || "";
+            portInput.value = status.links.port || "";
+          }
+        } catch (e) {
+          console.error("Failed to load data", e);
+        }
+      }
+
+      loadCurrentData();
+    </script>
+  </body>
+</html>
